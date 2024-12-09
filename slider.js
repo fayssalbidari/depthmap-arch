@@ -136,8 +136,6 @@ class DepthMapEffect {
     }
 
     loadImages(imageSet, callback) {
-        img.crossOrigin = "anonymous";
-        img.src = url;
         let images = [];
         let urls = [imageSet.original, imageSet.depth];
         let loaded = 0;
