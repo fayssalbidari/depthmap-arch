@@ -1,4 +1,3 @@
-// app.js optimized
 class DepthMapEffect {
     constructor(container) {
         this.container = document.querySelector(container);
@@ -20,13 +19,11 @@ class DepthMapEffect {
         this.mouse = { x: 0, y: 0 };
         this.mouseTarget = { x: 0, y: 0 };
 
-        // Références pour le personnage et le graffiti
         this.characterLayer = document.querySelector('.character-layer');
         this.characterImg = document.querySelector('.character-img');
         this.graffitiLayer = document.querySelector('.graffiti-layer');
         this.graffitiImg = document.querySelector('.graffiti-img');
 
-        // Paramètres de l'effet
         this.params = {
             depthMultiplier: 0.04,
             smoothing: 0.05,
@@ -96,9 +93,7 @@ class DepthMapEffect {
     setupButtons() {
         const buttons = document.querySelectorAll('.slider-controls button');
         const sliderActive = document.querySelector('.slider-active');
-        const sliderControls = document.querySelector('.slider-controls');
 
-        // Fonction pour mettre à jour la position de l'indicateur actif
         const updateSliderActivePosition = (button) => {
             const buttonLeft = button.offsetLeft;
             const buttonTop = button.offsetTop;
@@ -111,10 +106,8 @@ class DepthMapEffect {
             });
         };
 
-        // Initialiser la position sur le premier bouton
         updateSliderActivePosition(buttons[0]);
 
-        // Ajout des événements de clic aux boutons
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 const index = parseInt(button.getAttribute('data-index'), 10);
@@ -129,7 +122,6 @@ class DepthMapEffect {
                     });
                 }
 
-                // Mettre à jour la position de l'indicateur actif
                 updateSliderActivePosition(button);
             });
         });
@@ -142,6 +134,7 @@ class DepthMapEffect {
 
         urls.forEach((url, index) => {
             const img = new Image();
+            img.crossOrigin = "anonymous"; // Ajout de crossOrigin
             img.src = url;
             img.onload = () => {
                 images[index] = img;
